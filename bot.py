@@ -4,8 +4,10 @@ import time
 import threading
 
 # 🔐 COLOCA SUAS CHAVES DA BINANCE AQUI
-API_KEY = "FRq0f5GFl7u6KHn7SVZ38VeOE8lBEvolvHfCpy1a0pY38JO0Spsdf75zgM0LghO9"
-API_SECRET = "ys92MsLcWk2tsMw1mGbIF1Vx3buqBCKWyi7p7mT96PQhuH97r90z4XI1eZvZ2a94"
+import os
+
+API_KEY = os.environ.get("FRq0f5GFl7u6KHn7SVZ38VeOE8lBEvolvHfCpy1a0pY38JO0Spsdf75zgM0LghO9")
+API_SECRET = os.environ.get("ys92MsLcWk2tsMw1mGbIF1Vx3buqBCKWyi7p7mT96PQhuH97r90z4XI1eZvZ2a94")
 
 SYMBOL = "BTCUSDT"
 RISK_PERCENT = 0.025   # 2.5%
@@ -205,4 +207,6 @@ if __name__ == "__main__":
     t = threading.Thread(target=loop)
     t.start()
 
-    app.run(host="0.0.0.0", port=5000)
+    import os
+
+app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
